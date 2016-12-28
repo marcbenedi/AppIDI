@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view"
+        android:layout_gravity="center"
+        card_view:cardCornerRadius="4dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/book_image"
+                android:layout_width="100dp"
+                android:id="@+id/book_image"
+                android:layout_height="100dp" />
+
+            <TextView
+                android:layout_below="@+id/book_image"
+                android:text="Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/textView2" />
+
+            <TextView
+                android:text="Author"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/textView6"
+                android:layout_below="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_centerHorizontal="true"
+                android:text="Year"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView6"
+                android:id="@+id/textView3" />
+
+            <TextView
+                android:layout_centerHorizontal="true"
+                android:text="Publisher"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView3"
+                android:id="@+id/textView4" />
+
+            <TextView
+                android:layout_centerHorizontal="true"
+                android:text="Category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView4"
+                android:id="@+id/textView5" />
+
+            <RatingBar
+                android:id="@+id/ratingBar"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/textView5"
+                android:layout_width="wrap_content"
+                android:isIndicator="true"
+                android:numStars="5"
+                android:layout_height="wrap_content" />
+
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

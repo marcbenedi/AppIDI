@@ -24,7 +24,9 @@ public class BookData {
 
     // Here we only select Title and Author, must select the appropriate columns
     private String[] allColumns = { MySQLiteHelper.COLUMN_ID,
-            MySQLiteHelper.COLUMN_TITLE, MySQLiteHelper.COLUMN_AUTHOR};
+            MySQLiteHelper.COLUMN_TITLE, MySQLiteHelper.COLUMN_YEAR,
+            MySQLiteHelper.COLUMN_AUTHOR, MySQLiteHelper.COLUMN_CATEGORY,
+            MySQLiteHelper.COLUMN_PERSONAL_EVALUATION, MySQLiteHelper.COLUMN_PUBLISHER};
 
     public BookData(Context context) {
         dbHelper = new MySQLiteHelper(context);
@@ -102,9 +104,31 @@ public class BookData {
 
     private Book cursorToBook(Cursor cursor) {
         Book book = new Book();
+
+        System.out.println("pene");
+        System.out.println(cursor.getColumnIndex(MySQLiteHelper.COLUMN_AUTHOR));
+        System.out.println(cursor.getColumnIndex(MySQLiteHelper.COLUMN_YEAR));
+        System.out.println(cursor.getColumnIndex(MySQLiteHelper.COLUMN_PUBLISHER));
+        System.out.println(cursor.getColumnIndex(MySQLiteHelper.COLUMN_CATEGORY));
+        System.out.println(cursor.getColumnIndex(MySQLiteHelper.COLUMN_PERSONAL_EVALUATION));
+
         book.setId(cursor.getLong(0));
-        book.setTitle(cursor.getString(1));
-        book.setAuthor(cursor.getString(2));
+        book.setTitle(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_TITLE)));
+        book.setAuthor(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_AUTHOR)));
+        book.setPublisher(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_PUBLISHER)));
+        book.setYear(cursor.getInt(cursor.getColumnIndex(dbHelper.COLUMN_YEAR)));
+        book.setCategory(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_CATEGORY)));
+        book.setPersonal_evaluation(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_PERSONAL_EVALUATION)));
         return book;
     }
 }
+
+/*
+book.setId(cursor.getLong(0));
+        book.setTitle(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_TITLE)));
+        book.setAuthor(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_AUTHOR)));
+        book.setPublisher(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_PUBLISHER)));
+        book.setYear(cursor.getInt(cursor.getColumnIndex(dbHelper.COLUMN_YEAR)));
+        book.setCategory(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_CATEGORY)));
+        book.setPersonal_evaluation(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_PERSONAL_EVALUATION)));
+*/
