@@ -1,5 +1,7 @@
 package com.example.pr_idi.mydatabaseexample;
 
+import android.content.ContentValues;
+
 /**
  * Book
  * Created by pr_idi on 10/11/16.
@@ -16,6 +18,17 @@ public class Book {
     private String publisher;
     private String category;
     private String personal_evaluation;
+
+    public Book (){}
+
+    public Book(String author, String title, int year, String publisher, String category, String personal_evaluation) {
+        this.author = author;
+        this.title = title;
+        this.year = year;
+        this.publisher = publisher;
+        this.category = category;
+        this.personal_evaluation = personal_evaluation;
+    }
 
     public long getId() {
         return id;
@@ -80,5 +93,17 @@ public class Book {
     @Override
     public String toString() {
         return String.format("%s - %s", title, author);
+    }
+
+    public ContentValues toContentValues() {
+        ContentValues values = new ContentValues();
+        values.put(MySQLiteHelper.COLUMN_TITLE, title);
+        values.put(MySQLiteHelper.COLUMN_AUTHOR, author);
+        values.put(MySQLiteHelper.COLUMN_YEAR, year);
+        values.put(MySQLiteHelper.COLUMN_PUBLISHER, publisher);
+        values.put(MySQLiteHelper.COLUMN_CATEGORY, category);
+        values.put(MySQLiteHelper.COLUMN_PERSONAL_EVALUATION, personal_evaluation);
+
+        return values;
     }
 }

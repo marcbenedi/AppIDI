@@ -42,6 +42,20 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase database) {
         database.execSQL(DATABASE_CREATE);
+
+        //Insert 4 mock books
+
+        Book a = new Book("Albert Sánchez Piñol","Vae Victus",2015,
+                "La Campana","Historical Fiction","bo");
+        Book b = new Book("John Boyne","El noi del pijama de ratlles",2007,
+                "Editorial Empúries","Historical Fiction","molt bo");
+        Book c = new Book("Dmitry Glukhovsky","Metro 2033",2008,"Heyne Verlag","Science Fiction","molt bo");
+        Book d = new Book("Carlos Ruiz Zafón","L'ombra del vent",2006,"Editorial Planeta","Fiction","molt bo");
+
+        database.insert(TABLE_BOOKS,null,a.toContentValues());
+        database.insert(TABLE_BOOKS,null,b.toContentValues());
+        database.insert(TABLE_BOOKS,null,c.toContentValues());
+        database.insert(TABLE_BOOKS,null,d.toContentValues());
     }
 
     @Override

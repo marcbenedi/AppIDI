@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 
@@ -38,35 +40,26 @@ public class BooksSortedByCategoryFragment extends Fragment {
 
         myBookData = new BookData(getActivity().getApplicationContext());
         myBookData.open();
-
-
-        String[] newBook = new String[] { "Miguel Strogoff", "Jules Verne", "Ulysses", "James Joyce", "Don Quijote", "Miguel de Cervantes", "Metamorphosis", "Kafka" };
-        int nextInt = new Random().nextInt(4);
-        // save the new book to the database
-        Book book =myBookData.createBook(newBook[nextInt*2], newBook[nextInt*2 + 1]);
-        nextInt = new Random().nextInt(4);
-        book =myBookData.createBook(newBook[nextInt*2], newBook[nextInt*2 + 1]);
-        nextInt = new Random().nextInt(4);
-        book =myBookData.createBook(newBook[nextInt*2], newBook[nextInt*2 + 1]);
-        nextInt = new Random().nextInt(4);
-        book =myBookData.createBook(newBook[nextInt*2], newBook[nextInt*2 + 1]);
-        nextInt = new Random().nextInt(4);
-        book =myBookData.createBook(newBook[nextInt*2], newBook[nextInt*2 + 1]);
-        nextInt = new Random().nextInt(4);
-        book =myBookData.createBook(newBook[nextInt*2], newBook[nextInt*2 + 1]);
-
-
         myBooks = myBookData.getAllBooks();
         myBookData.close();
         ArrayList<Book> temp = new ArrayList<>(myBooks);
-        for (Book b:temp
-             ) {
-            System.out.println(b.getAuthor());
-            System.out.println(b.getPersonal_evaluation());
-        }
+
+        sortByCategory(temp);
+
         myAdapter = new BookRecyclerViewAdapter(temp);
         myRecyclerView.setAdapter(myAdapter);
 
         return v;
+    }
+
+    private void sortByCategory(ArrayList<Book> books){
+
+        Collections.sort(books, new Comparator<Book>() {
+            @Override
+            public int compare(Book b1, Book b2)
+            {
+                return  b1.getCategory().compareTo(b2.getCategory());
+            }
+        });
     }
 }
