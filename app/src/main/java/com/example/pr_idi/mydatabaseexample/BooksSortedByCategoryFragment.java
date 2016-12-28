@@ -15,13 +15,13 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 
-public class BooksSortedByCategoryFragment extends Fragment {
+public class BooksSortedByCategoryFragment extends FragmentWithInterface{
 
     private RecyclerView myRecyclerView;
     private RecyclerView.Adapter myAdapter;
     private RecyclerView.LayoutManager myLayoutManager;
     private BookData myBookData;
-    private List<Book> myBooks;
+    private ArrayList<Book> myBooks = new ArrayList<>();
     private static final String TAG = "BooksSortedByCategory..";
 
     @Override
@@ -38,16 +38,15 @@ public class BooksSortedByCategoryFragment extends Fragment {
         myLayoutManager = new LinearLayoutManager(inflater.getContext());
         myRecyclerView.setLayoutManager(myLayoutManager);
 
+        myAdapter = new BookRecyclerViewAdapter(myBooks);
+        myRecyclerView.setAdapter(myAdapter);
         myBookData = new BookData(getActivity().getApplicationContext());
         myBookData.open();
-        myBooks = myBookData.getAllBooks();
+        myBooks.clear();
+        myBooks.addAll(myBookData.getAllBooks());
         myBookData.close();
-        ArrayList<Book> temp = new ArrayList<>(myBooks);
-
-        sortByCategory(temp);
-
-        myAdapter = new BookRecyclerViewAdapter(temp);
-        myRecyclerView.setAdapter(myAdapter);
+        sortByCategory(myBooks);
+        myAdapter.notifyDataSetChanged();
 
         return v;
     }
@@ -61,5 +60,13 @@ public class BooksSortedByCategoryFragment extends Fragment {
                 return  b1.getCategory().compareTo(b2.getCategory());
             }
         });
+    }
+
+    @Override
+    public void updateList(ArrayList<Book> b) {
+        myBooks.clear();
+        myBooks.addAll(b);
+        sortByCategory(myBooks);
+        myAdapter.notifyDataSetChanged();
     }
 }

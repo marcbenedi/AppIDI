@@ -6,10 +6,9 @@
     android:layout_height="match_parent"
     tools:context="com.example.pr_idi.mydatabaseexample.MainActivity">
 
-    <fragment
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="com.example.pr_idi.mydatabaseexample.BooksSortedByCategoryFragment"
-        />
+        android:id="@+id/content_frame"/>
 
 </RelativeLayout>
