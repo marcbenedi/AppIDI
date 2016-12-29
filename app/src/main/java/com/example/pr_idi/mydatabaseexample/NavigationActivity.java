@@ -84,18 +84,15 @@ public class NavigationActivity extends AppCompatActivity
         Fragment currentFragment = myFragmentManager.findFragmentById(R.id.content_frame);
         myFragmentTransaction = myFragmentManager.beginTransaction();
 
-        if (true) {
+        if (id == R.id.title_sorting && !(currentFragment instanceof BooksSortedByTitleFragment)) {
+            BooksSortedByTitleFragment f = new BooksSortedByTitleFragment();
+            myFragmentTransaction.replace(R.id.content_frame,f);
+        } else if (id == R.id.category_sorting && !(currentFragment instanceof BooksSortedByCategoryFragment) ) {
             BooksSortedByCategoryFragment f = new BooksSortedByCategoryFragment();
             myFragmentTransaction.replace(R.id.content_frame,f);
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.help_menu) {
 
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.about_menu) {
 
         }
         myFragmentTransaction.commit();
