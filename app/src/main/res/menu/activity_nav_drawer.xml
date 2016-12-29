@@ -11,6 +11,14 @@
             android:icon="@drawable/ic_menu_gallery"
             android:title="Llibres per categoria" />
         <item
+            android:id="@+id/new_book"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Afegir nou llibre" />
+        <item
+            android:id="@+id/delete_book"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Eliminar un llibre" />
+        <item
             android:id="@+id/help_menu"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="Help" />

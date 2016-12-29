@@ -1,12 +1,9 @@
 package com.example.pr_idi.mydatabaseexample;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -19,8 +16,9 @@ import android.view.MenuItem;
 public class NavigationActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    FragmentManager myFragmentManager;
-    FragmentTransaction myFragmentTransaction;
+    private FragmentManager myFragmentManager;
+    private FragmentTransaction myFragmentTransaction;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,6 +87,12 @@ public class NavigationActivity extends AppCompatActivity
             myFragmentTransaction.replace(R.id.content_frame,f);
         } else if (id == R.id.category_sorting && !(currentFragment instanceof BooksSortedByCategoryFragment) ) {
             BooksSortedByCategoryFragment f = new BooksSortedByCategoryFragment();
+            myFragmentTransaction.replace(R.id.content_frame,f);
+        } else if (id == R.id.new_book){
+            AddNewBookFragment f = new AddNewBookFragment();
+            myFragmentTransaction.replace(R.id.content_frame,f);
+        } else if (id == R.id.delete_book){
+            DeleteBookFragment f = new DeleteBookFragment();
             myFragmentTransaction.replace(R.id.content_frame,f);
         } else if (id == R.id.help_menu) {
 

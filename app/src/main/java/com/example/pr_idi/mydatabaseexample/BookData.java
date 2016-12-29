@@ -85,6 +85,34 @@ public class BookData {
                 + " = " + id, null);
     }
 
+    public boolean deleteBookByTitle(String title){
+        int resultat = database.delete(MySQLiteHelper.TABLE_BOOKS, MySQLiteHelper.COLUMN_TITLE
+                + " =?",new String[] {title});
+
+        if (resultat != 0) return true;
+        else return false;
+    }
+
+    public ArrayList<Book> findBookByTitle(String title){
+
+        ArrayList<Book> books = new ArrayList<>();
+
+        Cursor cursor = database.query(MySQLiteHelper.TABLE_BOOKS,
+                allColumns, MySQLiteHelper.COLUMN_TITLE
+                        + " =?", new String[] {title}, null, null, null);
+
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            Book book = cursorToBook(cursor);
+            books.add(book);
+            cursor.moveToNext();
+        }
+        // make sure to close the cursor
+        cursor.close();
+        return books;
+    }
+
+
     public void insertBook(Book book){
         database.insert(MySQLiteHelper.TABLE_BOOKS,null,book.toContentValues());
     }

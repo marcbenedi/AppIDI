@@ -2,11 +2,13 @@ package com.example.pr_idi.mydatabaseexample;
 
 import android.content.ContentValues;
 
+import java.io.Serializable;
+
 /**
  * Book
  * Created by pr_idi on 10/11/16.
  */
-public class Book {
+public class Book implements Serializable {
 
     // Basic book data manipulation class
     // Contains basic information on the book

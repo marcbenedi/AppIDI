@@ -2,9 +2,6 @@
 
     <string name="app_name">And063</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
     <string name="title_activity_nav">NavActivity</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -12,5 +9,5 @@
 
     <string name="action_settings">Settings</string>
     <string name="title_activity_navigation">NavigationActivity</string>
->>>>>>> origin/Hermes
+    >>>>>>> origin/Hermes
 </resources>
