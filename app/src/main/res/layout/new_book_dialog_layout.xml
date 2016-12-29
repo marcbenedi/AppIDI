@@ -16,7 +16,7 @@
 
 
         <TextView
-            android:text="Title"
+            android:text="Títol"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/textView11" />
@@ -30,7 +30,7 @@
             android:textSize="12sp" />
 
         <TextView
-            android:text="Author"
+            android:text="Autor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/textView12" />
@@ -44,7 +44,7 @@
             android:textSize="12sp" />
 
         <TextView
-            android:text="Year"
+            android:text="Any"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/textView13" />
@@ -58,7 +58,7 @@
             android:textSize="12sp" />
 
         <TextView
-            android:text="Publisher"
+            android:text="Editorial"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/textView14" />
@@ -72,7 +72,7 @@
             android:textSize="12sp" />
 
         <TextView
-            android:text="Category"
+            android:text="Categoria"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/textView15" />
@@ -86,7 +86,7 @@
             android:textSize="12sp" />
 
         <TextView
-            android:text="Rating"
+            android:text="Valoració personal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/textView18" />

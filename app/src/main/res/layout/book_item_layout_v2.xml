@@ -28,7 +28,7 @@
                 android:layout_alignStart="@+id/textView2" />
 
             <TextView
-                android:text="Category"
+                android:text="Categoria"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textView9"
@@ -80,7 +80,7 @@
                 android:layout_marginTop="14dp" />
 
             <TextView
-                android:text="Year"
+                android:text="Any"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/textView8"
@@ -89,7 +89,7 @@
                 android:layout_alignParentStart="true" />
 
             <TextView
-                android:text="Publisher"
+                android:text="Editorial"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/textView9"
