@@ -44,7 +44,6 @@ public class BookRecyclerViewAdapter extends RecyclerView.Adapter<BookRecyclerVi
     }
 
     private int toStarts(String s){
-        System.out.println(s);
         switch (s) {
             case "molt bo":
                 return 5;

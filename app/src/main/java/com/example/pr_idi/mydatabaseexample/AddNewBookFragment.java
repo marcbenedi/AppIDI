@@ -6,18 +6,13 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
 
-public class AddNewBookFragment extends Fragment {
+public class AddNewBookFragment extends Fragment implements AddNewBookDialogFragment.NoticeDialogListener {
 
     private static final String TAG = "AddNewBookFragment";
     private FragmentManager myFragmentManager;
@@ -25,6 +20,8 @@ public class AddNewBookFragment extends Fragment {
     private FragmentWithInterface currentFragment;
     private ArrayList<Book> myBooks = new ArrayList<>();
     private BookData myBookData;
+    private AddNewBookFragment me;
+    private View onClickView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -34,25 +31,21 @@ public class AddNewBookFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.add_new_element,container,false);
+        me = this;
+        View v = inflater.inflate(R.layout.add_new_book,container,false);
         FloatingActionButton floatingActionButton = (FloatingActionButton) v.findViewById(R.id.fab);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 myBookData = new BookData(getActivity().getApplicationContext());
-                myBookData.open();
-                myBookData.insertBook(new Book("titol","author",1231,"publisher","AAAAA","dolent"));
-                myBooks.clear();
-                myBooks.addAll(myBookData.getAllBooks());
-                myBookData.close();
 
-                currentFragment.updateList(myBooks);
+                AddNewBookDialogFragment addNewBookDialogFragment = new AddNewBookDialogFragment();
+                addNewBookDialogFragment.setNoticeDialogListener(me);
+                addNewBookDialogFragment.show(myFragmentManager, "fragment_edit_name");
 
-                Snackbar snackbar = Snackbar
-                        .make(view, "New book added!", Snackbar.LENGTH_LONG);
+                onClickView = view;
 
-                snackbar.show();
             }
         });
 
@@ -64,5 +57,21 @@ public class AddNewBookFragment extends Fragment {
 
 
         return v;
+    }
+
+    @Override
+    public void onDialogPositiveClick(Book b) {
+        myBookData.open();
+        myBookData.insertBook(b);
+        myBooks.clear();
+        myBooks.addAll(myBookData.getAllBooks());
+        myBookData.close();
+
+        currentFragment.updateList(myBooks);
+
+        Snackbar snackbar = Snackbar
+                .make(onClickView, "New book "+ b.getTitle() +" added!", Snackbar.LENGTH_LONG);
+
+        snackbar.show();
     }
 }

@@ -2,6 +2,7 @@ package com.example.pr_idi.mydatabaseexample;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -34,8 +35,16 @@ public class BooksSortedByCategoryFragment extends FragmentWithInterface{
                              Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.books_sorted_by_category_layout,container,false);
+
+        if(getResources().getConfiguration().orientation == getResources().getConfiguration().ORIENTATION_LANDSCAPE){
+            myLayoutManager = new GridLayoutManager(getActivity().getApplicationContext(),2);
+        }
+        else{
+            myLayoutManager = new LinearLayoutManager(inflater.getContext());
+        }
+
+
         myRecyclerView = (RecyclerView) v.findViewById(R.id.book_recycler_view);
-        myLayoutManager = new LinearLayoutManager(inflater.getContext());
         myRecyclerView.setLayoutManager(myLayoutManager);
 
         myAdapter = new BookRecyclerViewAdapter(myBooks);
