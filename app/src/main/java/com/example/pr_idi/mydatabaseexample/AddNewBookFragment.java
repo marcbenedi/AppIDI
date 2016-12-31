@@ -6,6 +6,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,6 +32,9 @@ public class AddNewBookFragment extends Fragment implements AddNewBookDialogFrag
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        Log.v(TAG, "OnCreateView de del Fragment");
+
         me = this;
         View v = inflater.inflate(R.layout.add_new_book,container,false);
         FloatingActionButton floatingActionButton = (FloatingActionButton) v.findViewById(R.id.fab);
