@@ -11,6 +11,10 @@
             android:icon="@drawable/ic_menu_gallery"
             android:title="Llibres per categoria" />
         <item
+            android:id="@+id/esborrar_llibre"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Esborrar Llibre" />
+        <item
             android:id="@+id/help_menu"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="Help" />

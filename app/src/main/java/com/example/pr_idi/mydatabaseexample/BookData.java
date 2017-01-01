@@ -102,6 +102,12 @@ public class BookData {
         return books;
     }
 
+    public void updateValoracion(Integer id, String valoracion) {
+        ContentValues cv = new ContentValues();
+        cv.put(dbHelper.COLUMN_PERSONAL_EVALUATION,valoracion);
+        database.update(dbHelper.TABLE_BOOKS,cv,dbHelper.COLUMN_ID+"="+id,null);
+    }
+
     private Book cursorToBook(Cursor cursor) {
         Book book = new Book();
 

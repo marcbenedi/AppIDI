@@ -3,6 +3,8 @@ package com.example.pr_idi.mydatabaseexample;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
+import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,10 +20,14 @@ import java.util.List;
 public class BooksSortedByTitleFragment extends Fragment {
 
     private BookData myBookData;
+    ArrayAdapter<String> adapter;
+    List<Book> myBooks;
+    ListView lv;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
     }
 
     @Override
@@ -30,14 +36,15 @@ public class BooksSortedByTitleFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_books_sorted_by_title, container, false);
 
+
         myBookData = new BookData(getActivity().getApplicationContext());
         myBookData.open();
 
-        ListView lv = (ListView) v.findViewById(R.id.list_view_titles);
+        lv = (ListView) v.findViewById(R.id.list_view_titles);
 
         ArrayList<String> titles = new ArrayList<>();
 
-        List<Book> myBooks = myBookData.getAllBooks();
+        myBooks = myBookData.getAllBooks();
 
         for (Book b : myBooks) {
             titles.add(b.getTitle());
@@ -50,14 +57,58 @@ public class BooksSortedByTitleFragment extends Fragment {
             }
         });
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity().getApplicationContext(),
+        adapter = new ArrayAdapter<String>(getActivity().getApplicationContext(),
                 R.layout.item_title_list, titles);
 
         lv.setAdapter(adapter);
 
+        SearchView searchView = (SearchView) v.findViewById(R.id.search_bar_title_fragment);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                filtrarPerAutor(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filtrarPerAutor(newText);
+                return false;
+            }
+        });
+
+        searchView.setOnCloseListener(new SearchView.OnCloseListener() {
+            @Override
+            public boolean onClose() {
+                filtrarPerAutor("");
+                return false;
+            }
+        });
+
         return v;
     }
 
-
-
+    public void filtrarPerAutor(String autor) {
+        ArrayList<String> filtered = new ArrayList<>();
+        if (autor.equals("")) {
+            for (Book b : myBooks) {
+                filtered.add(b.getTitle());
+            }
+        }
+        else {
+            for (Book b : myBooks) {
+                if (b.getAuthor().startsWith(autor)) filtered.add(b.getTitle());
+            }
+        }
+        Collections.sort(filtered, new Comparator<String>() {
+            @Override
+            public int compare(String s1, String s2) {
+                return s1.compareToIgnoreCase(s2);
+            }
+        });
+        adapter = new ArrayAdapter<String>(getActivity().getApplicationContext(),
+                R.layout.item_title_list, filtered);
+        lv.setAdapter(adapter);
+    }
 }
