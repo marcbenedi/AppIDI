@@ -25,8 +25,7 @@ public class DeleteBookDialogFragment extends DialogFragment {
      * implement this interface in order to receive event callbacks.
      * Each method passes the DialogFragment in case the host needs to query it. */
     public interface NoticeDialogListener {
-        public void onDialogPositiveClick();
-        //public void onDialogNegativeClick(Book b);
+        public void onDialogPositiveClick(Book b);
     }
 
     // Use this instance of the interface to deliver action events
@@ -77,7 +76,7 @@ public class DeleteBookDialogFragment extends DialogFragment {
         alertDialogBuilder.setPositiveButton("Eliminar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                mListener.onDialogPositiveClick();
+                mListener.onDialogPositiveClick(b);
             }
         });
 

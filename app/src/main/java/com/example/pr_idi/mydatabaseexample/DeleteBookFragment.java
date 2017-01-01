@@ -25,7 +25,6 @@ public class DeleteBookFragment extends Fragment implements DeleteBookDialogFrag
     private EditText myEditText;
     private Button delButton;
     private BookData myBookData;
-    private View onClickView;
     private DeleteBookFragment me;
     private FragmentManager myFragmentManager;
     private TextView error_message;
@@ -35,6 +34,7 @@ public class DeleteBookFragment extends Fragment implements DeleteBookDialogFrag
     private ArrayList<Book> books = new ArrayList<>();
     private Book llibreAEliminar;
     private int pos_previa;
+    private DeleteBookDialogFragment deleteBookDialogFragment;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -59,9 +59,8 @@ public class DeleteBookFragment extends Fragment implements DeleteBookDialogFrag
         myAdapter = new BookRecyclerViewAdapterWithOnClickListener(books,me);
         recyclerView.setAdapter(myAdapter);
 
-
-
         if(savedInstanceState != null){
+            System.out.println("oncreateview DIFERENT DE NULL");
             myEditText.setText(savedInstanceState.getString("titol_buscat"));
             myBookData.open();
             books.clear();
@@ -72,6 +71,13 @@ public class DeleteBookFragment extends Fragment implements DeleteBookDialogFrag
             if (books.isEmpty()){
                 error_message.setVisibility(View.VISIBLE);
             }
+
+            deleteBookDialogFragment = (DeleteBookDialogFragment) getActivity().getSupportFragmentManager().findFragmentByTag("fragment_delete_book_dialog");
+            if (deleteBookDialogFragment != null){
+                deleteBookDialogFragment.setParams(me, llibreAEliminar);
+            }
+
+
         }
 
         myFragmentManager = getActivity().getSupportFragmentManager();
@@ -93,8 +99,6 @@ public class DeleteBookFragment extends Fragment implements DeleteBookDialogFrag
 
                 if(books.size() == 0) error_message.setVisibility(View.VISIBLE);
                 else error_message.setVisibility(View.INVISIBLE);
-
-                onClickView = v;
             }
         });
 
@@ -102,17 +106,29 @@ public class DeleteBookFragment extends Fragment implements DeleteBookDialogFrag
     }
 
     @Override
-    public void onDialogPositiveClick() {
+    public void onDialogPositiveClick(Book b) {
         myBookData.open();
-        myBookData.deleteBook(llibreAEliminar);
+        myBookData.deleteBook(b);
         myBookData.close();
 
-        pos_previa = books.indexOf(llibreAEliminar);
+        int temp = 0;
+        boolean trobat = false;
+        while (!trobat){
+            Book bb = books.get(temp);
+            //System.out.println("Bucle: "+bb.getTitle() + " Id: " + bb.getId());
+            //System.out.println("Lid de l'original es "+ b.getId());
+            if (bb.getId() == b.getId())trobat = true;
+            else ++temp;
+        }
+        //System.out.println("Posicio: " + temp + " Longitud array: "+books.size());
+        pos_previa = temp;
         books.remove(pos_previa);
         myAdapter.notifyItemRemoved(pos_previa);
 
+        llibreAEliminar = b;
+
         Snackbar snackbar = Snackbar
-                .make(onClickView, "Llibre eliminat", Snackbar.LENGTH_LONG);
+                .make(getView(), "Llibre eliminat", Snackbar.LENGTH_LONG);
         snackbar.setAction("Desfés",new MyUndoListener());
         snackbar.show();
     }
@@ -138,9 +154,11 @@ public class DeleteBookFragment extends Fragment implements DeleteBookDialogFrag
 
     @Override
     public void onItemClick(Book b) {
-        DeleteBookDialogFragment deleteBookDialogFragment = new DeleteBookDialogFragment();
+        if (deleteBookDialogFragment == null){
+            deleteBookDialogFragment = new DeleteBookDialogFragment();
+        }
         deleteBookDialogFragment.setParams(me, b);
-        deleteBookDialogFragment.show(myFragmentManager, "fragment_edit_name");
+        deleteBookDialogFragment.show(myFragmentManager, "fragment_delete_book_dialog");
         error_message.setVisibility(View.INVISIBLE);
         llibreAEliminar = b;
     }

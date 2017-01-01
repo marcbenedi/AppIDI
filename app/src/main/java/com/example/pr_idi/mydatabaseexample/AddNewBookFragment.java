@@ -22,7 +22,7 @@ public class AddNewBookFragment extends Fragment implements AddNewBookDialogFrag
     private ArrayList<Book> myBooks = new ArrayList<>();
     private BookData myBookData;
     private AddNewBookFragment me;
-    private View onClickView;
+    private AddNewBookDialogFragment addNewBookDialogFragment;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -42,16 +42,23 @@ public class AddNewBookFragment extends Fragment implements AddNewBookDialogFrag
             @Override
             public void onClick(View view) {
 
-                myBookData = new BookData(getActivity().getApplicationContext());
+                if (addNewBookDialogFragment == null){
+                    //Encara no l'haviem fet servir mai
+                    addNewBookDialogFragment = new AddNewBookDialogFragment();
+                }
 
-                AddNewBookDialogFragment addNewBookDialogFragment = new AddNewBookDialogFragment();
                 addNewBookDialogFragment.setNoticeDialogListener(me);
-                addNewBookDialogFragment.show(myFragmentManager, "fragment_edit_name");
-
-                onClickView = view;
+                addNewBookDialogFragment.show(myFragmentManager, "fragment_tag_add_new_book_dialog");
 
             }
         });
+
+        if (savedInstanceState != null){
+            addNewBookDialogFragment = (AddNewBookDialogFragment) getActivity().getSupportFragmentManager().findFragmentByTag("fragment_tag_add_new_book_dialog");
+            if (addNewBookDialogFragment != null){
+                addNewBookDialogFragment.setNoticeDialogListener(me);
+            }
+        }
 
         myFragmentManager = getActivity().getSupportFragmentManager();
         myFragmentTransaction = myFragmentManager.beginTransaction();
@@ -65,6 +72,7 @@ public class AddNewBookFragment extends Fragment implements AddNewBookDialogFrag
 
     @Override
     public void onDialogPositiveClick(Book b) {
+        myBookData = new BookData(getActivity().getApplicationContext());
         myBookData.open();
         myBookData.insertBook(b);
         myBooks.clear();
@@ -74,8 +82,15 @@ public class AddNewBookFragment extends Fragment implements AddNewBookDialogFrag
         currentFragment.updateList(myBooks);
 
         Snackbar snackbar = Snackbar
-                .make(onClickView, "New book "+ b.getTitle() +" added!", Snackbar.LENGTH_LONG);
+                .make(getView(), "El llibre "+ b.getTitle() +" s'ha afegit!", Snackbar.LENGTH_LONG);
+        snackbar.setAction("Desfés", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+            }
+        });
         snackbar.show();
+
+
     }
 }

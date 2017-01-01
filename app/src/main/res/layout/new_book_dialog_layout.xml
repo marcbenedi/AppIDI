@@ -55,6 +55,7 @@
             android:ems="10"
             android:id="@+id/editTextYear"
             android:inputType="number"
+            android:maxLength="4"
             android:textSize="12sp" />
 
         <TextView
