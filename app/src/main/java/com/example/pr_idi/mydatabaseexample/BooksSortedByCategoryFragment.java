@@ -28,6 +28,7 @@ public class BooksSortedByCategoryFragment extends FragmentWithInterface{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(false);
     }
 
     @Override
