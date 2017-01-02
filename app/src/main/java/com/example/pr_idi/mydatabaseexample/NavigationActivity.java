@@ -114,6 +114,8 @@ public class NavigationActivity extends AppCompatActivity
         }
         else if (id == R.id.about_menu) {
             navigationView.getMenu().getItem(7).setChecked(true);
+            AboutFragment f = new AboutFragment();
+            myFragmentTransaction.replace(R.id.content_frame,f);
         }
         myFragmentTransaction.commit();
         setTitle(item.getTitle());
