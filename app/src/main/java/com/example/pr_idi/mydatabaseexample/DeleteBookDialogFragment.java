@@ -20,6 +20,7 @@ public class DeleteBookDialogFragment extends DialogFragment {
     private TextView editorial;
     private TextView any;
     private RatingBar valoracio;
+    private TextView categoria;
     private Book b;
     /* The activity that creates an instance of this dialog fragment must
      * implement this interface in order to receive event callbacks.
@@ -46,11 +47,13 @@ public class DeleteBookDialogFragment extends DialogFragment {
         editorial = (TextView) view.findViewById(R.id.textView4);
         any = (TextView) view.findViewById(R.id.textView3);
         valoracio = (RatingBar) view.findViewById(R.id.ratingBar);
+        categoria = (TextView) view.findViewById(R.id.textView5);
 
         autor.setText(b.getAuthor());
         titol.setText(b.getTitle());
         editorial.setText(b.getPublisher());
         any.setText(String.valueOf(b.getYear()));
+        categoria.setText(b.getCategory());
 
         switch (b.getPersonal_evaluation()){
             case "molt dolent":
