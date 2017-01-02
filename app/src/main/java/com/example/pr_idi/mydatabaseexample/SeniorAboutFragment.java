@@ -30,6 +30,8 @@ public class SeniorAboutFragment extends Fragment {
         cognom_.setText(cognoms);
         TextView correu_ = (TextView) v.findViewById(R.id.correu);
         correu_.setText(correu);
+        TextView part = (TextView) v.findViewById(R.id.part);
+        part.setText("A");
 
         return v;
     }

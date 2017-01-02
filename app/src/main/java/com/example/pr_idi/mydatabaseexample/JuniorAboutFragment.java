@@ -28,6 +28,8 @@ public class JuniorAboutFragment extends Fragment {
         cognom_.setText(cognom);
         TextView correu_ = (TextView) v.findViewById(R.id.correu);
         correu_.setText(correu);
+        TextView part = (TextView) v.findViewById(R.id.part);
+        part.setText("B");
         return v;
     }
 

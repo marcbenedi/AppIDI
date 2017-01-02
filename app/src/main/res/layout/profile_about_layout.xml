@@ -38,7 +38,7 @@
         android:layout_marginLeft="15dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Correu: "
+        android:text="Correu "
         android:id="@+id/correu_field"
         android:layout_below="@id/cognoms"
         android:textStyle="normal|bold" />
@@ -53,7 +53,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Grup: "
+        android:text="Grup "
         android:layout_marginLeft="15dp"
         android:layout_below="@id/correu_field"
         android:id="@+id/grup_field"
@@ -62,9 +62,28 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/part_field"
+        android:textStyle="normal|bold"
+        android:layout_marginLeft="15dp"
+        android:layout_below="@+id/grup_field"
+        android:text="Part "/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="And063"
-        android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/correu" />
+        android:id="@+id/grup"
+        android:layout_alignBaseline="@id/grup_field"
+        android:layout_alignStart="@id/correu" />
+
+    <TextView
+        android:id="@+id/part"
+        android:layout_width="wrap_content"
+        android:layout_alignBaseline="@id/part_field"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@id/grup"
+        android:text="Part A"
+        />
 
 
 </RelativeLayout>
