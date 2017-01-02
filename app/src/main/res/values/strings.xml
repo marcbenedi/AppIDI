@@ -28,4 +28,7 @@
 
     <string name="canviar_valoracio_help_body">En aquesta secció podrem canviar la valoració personal dels llibres que tenim a la base de dades. Per fer-ho, simplement farem clic sobre el llibre que volem canviar, i ens apareixerà una finestra per introduir la nova valoració. Posteriorment, si confirmem l\'acció, veurem que s\'ha actualitzat la nostra valoració personal del llibre</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
