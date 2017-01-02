@@ -83,14 +83,7 @@ public class BookData {
         System.out.println("Book deleted with id: " + id);
         database.delete(MySQLiteHelper.TABLE_BOOKS, MySQLiteHelper.COLUMN_ID
                 + " = " + id, null);
-    }
-
-    public boolean deleteBookByTitle(String title){
-        int resultat = database.delete(MySQLiteHelper.TABLE_BOOKS, MySQLiteHelper.COLUMN_TITLE
-                + " =?",new String[] {title});
-
-        if (resultat != 0) return true;
-        else return false;
+        System.out.println("fi delete");
     }
 
     public ArrayList<Book> findBookByTitle(String title){
@@ -112,7 +105,9 @@ public class BookData {
 
 
     public void insertBook(Book book){
+        System.out.println("insert book");
         database.insert(MySQLiteHelper.TABLE_BOOKS,null,book.toContentValues());
+        System.out.println("fi insert");
     }
 
     public List<Book> getAllBooks() {

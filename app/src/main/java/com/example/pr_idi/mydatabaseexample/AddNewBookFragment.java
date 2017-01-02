@@ -62,7 +62,7 @@ public class AddNewBookFragment extends Fragment implements AddNewBookDialogFrag
 
         myFragmentManager = getActivity().getSupportFragmentManager();
         myFragmentTransaction = myFragmentManager.beginTransaction();
-        currentFragment = new BooksSortedByCategoryFragment();
+        currentFragment = new BooksSortedByTitleWithCardsFragment();
         myFragmentTransaction.replace(R.id.content_frame_2, currentFragment);
         myFragmentTransaction.commit();
 

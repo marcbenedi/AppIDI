@@ -129,21 +129,18 @@ public class DeleteBookFragment extends Fragment implements DeleteBookDialogFrag
 
         Snackbar snackbar = Snackbar
                 .make(getView(), "Llibre eliminat", Snackbar.LENGTH_LONG);
-        snackbar.setAction("Desfés",new MyUndoListener());
+        snackbar.setAction("Desfés", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myBookData.open();
+                myBookData.insertBook(llibreAEliminar);
+                myBookData.close();
+
+                books.add(pos_previa,llibreAEliminar);
+                myAdapter.notifyItemInserted(pos_previa);
+            }
+        });
         snackbar.show();
-    }
-
-    public class MyUndoListener implements View.OnClickListener{
-
-        @Override
-        public void onClick(View v) {
-            myBookData.open();
-            myBookData.insertBook(llibreAEliminar);
-            myBookData.close();
-
-            books.add(pos_previa,llibreAEliminar);
-            myAdapter.notifyItemInserted(pos_previa);
-        }
     }
 
     @Override

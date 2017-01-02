@@ -41,7 +41,8 @@
         android:text="Correu "
         android:id="@+id/correu_field"
         android:layout_below="@id/cognoms"
-        android:textStyle="normal|bold" />
+        android:textStyle="normal|bold"
+        android:textSize="18sp" />
     <TextView
         android:layout_marginLeft="10dp"
         android:layout_width="wrap_content"
@@ -49,7 +50,8 @@
         android:id="@+id/correu"
         android:layout_alignBaseline="@+id/correu_field"
         android:text="marc.benedi@est.fib.upc.edu"
-        android:layout_toEndOf="@+id/correu_field"/>
+        android:layout_toEndOf="@+id/correu_field"
+        android:textSize="18sp" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -57,7 +59,8 @@
         android:layout_marginLeft="15dp"
         android:layout_below="@id/correu_field"
         android:id="@+id/grup_field"
-        android:textStyle="normal|bold" />
+        android:textStyle="normal|bold"
+        android:textSize="18sp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -66,7 +69,8 @@
         android:textStyle="normal|bold"
         android:layout_marginLeft="15dp"
         android:layout_below="@+id/grup_field"
-        android:text="Part "/>
+        android:text="Part "
+        android:textSize="18sp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -74,7 +78,8 @@
         android:text="And063"
         android:id="@+id/grup"
         android:layout_alignBaseline="@id/grup_field"
-        android:layout_alignStart="@id/correu" />
+        android:layout_alignStart="@id/correu"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/part"
@@ -83,7 +88,7 @@
         android:layout_height="wrap_content"
         android:layout_alignStart="@id/grup"
         android:text="Part A"
-        />
+        android:textSize="18sp" />
 
 
 </RelativeLayout>
