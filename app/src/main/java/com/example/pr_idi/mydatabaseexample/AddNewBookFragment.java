@@ -53,7 +53,7 @@ public class AddNewBookFragment extends Fragment implements AddNewBookDialogFrag
             }
         });
 
-        if (savedInstanceState != null){
+        if (savedInstanceState != null) {
             addNewBookDialogFragment = (AddNewBookDialogFragment) getActivity().getSupportFragmentManager().findFragmentByTag("fragment_tag_add_new_book_dialog");
             if (addNewBookDialogFragment != null){
                 addNewBookDialogFragment.setNoticeDialogListener(me);

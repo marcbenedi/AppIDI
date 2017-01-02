@@ -19,7 +19,7 @@
     android:id="@+id/text_title"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:textAppearance="@style/TextAppearance.AppCompat"
+    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
     android:textColor="#555555"
     android:gravity="center_vertical"
     android:paddingLeft="?android:attr/listPreferredItemPaddingLeft"

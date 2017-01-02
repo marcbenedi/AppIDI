@@ -60,8 +60,13 @@ public class AddNewBookDialogFragment extends DialogFragment {
         ratingBar = (RatingBar) view.findViewById(R.id.ratingBar);
         ratingBarTextView = (TextView) view.findViewById(R.id.textViewRating);
 
-        ratingBar.setRating(1);
-        ratingBarTextView.setText(t);
+        if (savedInstanceState == null) {
+            ratingBarTextView.setText("molt dolent");
+            ratingBar.setRating(1);
+        }
+        else {
+            ratingBarTextView.setText(savedInstanceState.getCharSequence("state_rating"));
+        }
 
 
         ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
@@ -151,5 +156,11 @@ public class AddNewBookDialogFragment extends DialogFragment {
 
     public void setNoticeDialogListener (NoticeDialogListener mListener) {
         this.mListener = mListener;
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putCharSequence("state_rating",ratingBarTextView.getText().toString());
     }
 }

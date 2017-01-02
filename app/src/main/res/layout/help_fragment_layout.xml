@@ -1,13 +1,50 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.pr_idi.mydatabaseexample.HelpFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:orientation="vertical"
+        >
+        <include
+            layout="@layout/card_help"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:id="@+id/card1"
+            />
+        <include
+            layout="@layout/card_help"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:id="@+id/card2"
+            />
+        <include
+            layout="@layout/card_help"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:id="@+id/card3"
+            />
+        <include
+            layout="@layout/card_help"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:id="@+id/card4"
+            />
+        <include
+            layout="@layout/card_help"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:id="@+id/card5"
+            />
+        <include
+            layout="@layout/card_help"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:id="@+id/card6"
+            />
+    </LinearLayout>
 
-</FrameLayout>
+</ScrollView>

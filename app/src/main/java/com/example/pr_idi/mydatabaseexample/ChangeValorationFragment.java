@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,7 +45,7 @@ public class ChangeValorationFragment extends Fragment implements BookRecyclerVi
         View v = inflater.inflate(R.layout.fragment_change_valoration, container, false);
 
         if(getResources().getConfiguration().orientation == getResources().getConfiguration().ORIENTATION_LANDSCAPE){
-            myLayoutManager = new GridLayoutManager(getActivity().getApplicationContext(),2);
+            myLayoutManager = new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);
         }
         else{
             myLayoutManager = new LinearLayoutManager(inflater.getContext());
@@ -61,6 +62,14 @@ public class ChangeValorationFragment extends Fragment implements BookRecyclerVi
         myAdapter.notifyDataSetChanged();
 
         myFragmentManager = getActivity().getSupportFragmentManager();
+
+
+        if (savedInstanceState != null) {
+            changeValorationDialogFragment = (ChangeValorationDialogFragment) getActivity().getSupportFragmentManager().findFragmentByTag("fragment_change_valoration_dialog");
+            if (changeValorationDialogFragment != null){
+                changeValorationDialogFragment.setListener(me);
+            }
+        }
 
         return v;
     }

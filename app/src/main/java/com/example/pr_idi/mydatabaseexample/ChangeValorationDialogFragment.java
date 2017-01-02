@@ -21,6 +21,7 @@ public class ChangeValorationDialogFragment extends DialogFragment {
     private TextView titol;
     private TextView editorial;
     private TextView any;
+    private TextView categoria;
     private RatingBar valoracio;
     private Book b;
 
@@ -53,11 +54,14 @@ public class ChangeValorationDialogFragment extends DialogFragment {
         editorial = (TextView) view.findViewById(R.id.textView4);
         any = (TextView) view.findViewById(R.id.textView3);
         valoracio = (RatingBar) view.findViewById(R.id.ratingBar);
+        categoria = (TextView) view.findViewById(R.id.textView5);
+
 
         autor.setText(b.getAuthor());
         titol.setText(b.getTitle());
         editorial.setText(b.getPublisher());
         any.setText(String.valueOf(b.getYear()));
+        categoria.setText(b.getCategory());
 
         switch (b.getPersonal_evaluation()){
             case "molt dolent":
@@ -79,8 +83,13 @@ public class ChangeValorationDialogFragment extends DialogFragment {
         ratingBar = (RatingBar) view.findViewById(R.id.ratingBarDialog);
         ratingBarTextView = (TextView) view.findViewById(R.id.stateRatingBar);
 
-        ratingBarTextView.setText("molt dolent");
-        ratingBar.setRating(1);
+        if (savedInstanceState == null) {
+            ratingBarTextView.setText("molt dolent");
+            ratingBar.setRating(1);
+        }
+        else {
+            ratingBarTextView.setText(savedInstanceState.getCharSequence("state_rating"));
+        }
 
 
         ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
@@ -164,6 +173,11 @@ public class ChangeValorationDialogFragment extends DialogFragment {
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putSerializable("llibre_guardat",b);
+        outState.putCharSequence("state_rating",ratingBarTextView.getText().toString());
+    }
+
+    public void setListener (NoticeDialogListener mListener) {
+        this.mListener = mListener;
     }
 
 }

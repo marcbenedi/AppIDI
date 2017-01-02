@@ -4,35 +4,35 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/title_sorting"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_list_black_18dp"
             android:title="Llibres per títol" />
         <item
             android:id="@+id/category_sorting"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/ic_class_black_18dp"
             android:title="Llibres per categoria" />
         <item
             android:id="@+id/books_by_author"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/ic_person_black_18dp"
             android:title="Llibres per autor" />
         <item
             android:id="@+id/new_book"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/ic_add_circle_outline_black_18dp"
             android:title="Afegir nou llibre" />
         <item
             android:id="@+id/delete_book"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/ic_delete_black_18dp"
             android:title="Eliminar un llibre" />
         <item
             android:id="@+id/change_valoration_menu"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/ic_star_rate_black_18dp"
             android:title="Canviar una valoració" />
         <item
             android:id="@+id/help_menu"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_help_black_18dp"
             android:title="Help" />
         <item
             android:id="@+id/about_menu"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/ic_info_outline_black_18dp"
             android:title="About" />
     </group>
 

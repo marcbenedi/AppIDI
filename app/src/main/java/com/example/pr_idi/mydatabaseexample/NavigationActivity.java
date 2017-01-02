@@ -110,6 +110,8 @@ public class NavigationActivity extends AppCompatActivity
             navigationView.getMenu().getItem(5).setChecked(true);
         }
         else if (id == R.id.help_menu) {
+            HelpFragment f = new HelpFragment();
+            myFragmentTransaction.replace(R.id.content_frame,f);
             navigationView.getMenu().getItem(6).setChecked(true);
         }
         else if (id == R.id.about_menu) {

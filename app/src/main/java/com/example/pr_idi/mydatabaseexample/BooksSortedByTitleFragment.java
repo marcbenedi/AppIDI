@@ -61,53 +61,7 @@ public class BooksSortedByTitleFragment extends Fragment {
 
         lv.setAdapter(adapter);
 
-//        SearchView searchView = (SearchView) v.findViewById(R.id.search_bar_title_fragment);
-//
-//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-//            @Override
-//            public boolean onQueryTextSubmit(String query) {
-//                filtrarPerAutor(query);
-//                return false;
-//            }
-//
-//            @Override
-//            public boolean onQueryTextChange(String newText) {
-//                filtrarPerAutor(newText);
-//                return false;
-//            }
-//        });
-//
-//        searchView.setOnCloseListener(new SearchView.OnCloseListener() {
-//            @Override
-//            public boolean onClose() {
-//                filtrarPerAutor("");
-//                return false;
-//            }
-//        });
-
         return v;
     }
 
-//    public void filtrarPerAutor(String autor) {
-//        ArrayList<String> filtered = new ArrayList<>();
-//        if (autor.equals("")) {
-//            for (Book b : myBooks) {
-//                filtered.add(b.getTitle());
-//            }
-//        }
-//        else {
-//            for (Book b : myBooks) {
-//                if (b.getAuthor().startsWith(autor)) filtered.add(b.getTitle());
-//            }
-//        }
-//        Collections.sort(filtered, new Comparator<String>() {
-//            @Override
-//            public int compare(String s1, String s2) {
-//                return s1.compareToIgnoreCase(s2);
-//            }
-//        });
-//        adapter = new ArrayAdapter<String>(getActivity().getApplicationContext(),
-//                R.layout.item_title_list, filtered);
-//        lv.setAdapter(adapter);
-//    }
 }

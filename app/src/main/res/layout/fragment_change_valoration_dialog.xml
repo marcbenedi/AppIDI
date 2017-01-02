@@ -1,37 +1,39 @@
 
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.example.pr_idi.mydatabaseexample.ChangeValorationDialogFragment"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
-
-    <include
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context="com.example.pr_idi.mydatabaseexample.ChangeValorationDialogFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        layout="@layout/book_item_layout_v2" />
+        android:orientation="vertical">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Nova valoració:"
-        android:gravity="center"
-        android:layout_marginTop="15dp" />
+        <include
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            layout="@layout/book_item_layout_v2" />
 
-    <RatingBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/ratingBarDialog"
-        android:numStars="5"
-        android:layout_gravity="center_horizontal"
-        android:stepSize="1"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nova valoració:"
+            android:gravity="center"
+            android:layout_marginTop="15dp" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/stateRatingBar"
-        android:gravity="center"/>
+        <RatingBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ratingBarDialog"
+            android:numStars="5"
+            android:layout_gravity="center_horizontal"
+            android:stepSize="1"/>
 
-
-</LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/stateRatingBar"
+            android:gravity="center"/>
+    </LinearLayout>
+</ScrollView>

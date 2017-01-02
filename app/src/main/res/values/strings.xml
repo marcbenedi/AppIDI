@@ -1,16 +1,31 @@
 <resources>
 
-    <string name="app_name">And063</string>
+    <string name="app_name">Els meus llibres</string>
 
-    <string name="title_activity_nav">NavActivity</string>
+    <string name="title_activity_nav">Els meus llibres</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
-    <string name="title_activity_navigation">NavigationActivity</string>
+    <string name="title_activity_navigation">Els meus llibres</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    >>>>>>> origin/Hermes
+    <string name="llibres_per_titol_help_title">Llibres per títol</string>
+    <string name="llibres_per_categoria_help_title">Llibres per categoria</string>
+    <string name="llibres_per_autor_help_title">Llibres per autor</string>
+    <string name="afegir_llibre_help_title">Afegir nou llibre</string>
+    <string name="eliminar_llibre_help_title">Eliminar un llibre</string>
+    <string name="canviar_valoracio_help_title">Canviar una valoració</string>
+
+    <string name="llibres_per_titol_help_body">En aquesta secció es mostren els títols dels llibres que tenim a la base de dades ordenats alfabèticament</string>
+    <string name="llibres_per_categoria_help_body">En aquesta secció es mostra la informació de tots els llibres que tenim a la base de dades ordenats per categoria </string>
+
+    <string name="llibres_per_autor_help_body">En aquesta secció es poden visualitzar les dades dels llibres escrits per un autor cercat per l\'usuari. Per tal d\'efectuar la cerca, haurem d\'escriure el nom de l\'autor en el camp de text i prémer el botó de Cerca </string>
+
+    <string name="afegir_llibre_help_body">En aquesta secció es poden afegir nous llibres a la base de dades. Per fer-ho, haurem de prémer el botó amb el símbol "+" que es troba a la part inferior dreta de la pantalla. Un cop entrades les dades del nou llibre, i si tot ha anat correctament sense errors, veurem que el nou llibre s\'ha afegit</string>
+
+    <string name="eliminar_llibre_help_body">En aquesta secció podem eliminar els llibres que ja no volguem a la base de dades. Per fer-ho, cercarem el títol del llibre i posteriorment farem clic sobre la targeta que conté les dades del llibre a eliminar. Després d\'una confirmació, el llibre serà eliminat, tot i que aquesta acció es pot desfer si fem clic a "Desfés" quan aquesta opció aparegui</string>
+
+    <string name="canviar_valoracio_help_body">En aquesta secció podrem canviar la valoració personal dels llibres que tenim a la base de dades. Per fer-ho, simplement farem clic sobre el llibre que volem canviar, i ens apareixerà una finestra per introduir la nova valoració. Posteriorment, si confirmem l\'acció, veurem que s\'ha actualitzat la nostra valoració personal del llibre</string>
+
 </resources>
