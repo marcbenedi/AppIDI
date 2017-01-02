@@ -16,7 +16,7 @@
             android:title="Llibres per autor" />
         <item
             android:id="@+id/new_book"
-            android:icon="@drawable/ic_add_circle_outline_black_18dp"
+            android:icon="@drawable/ic_add_circle_black_18dp"
             android:title="Afegir nou llibre" />
         <item
             android:id="@+id/delete_book"
@@ -32,7 +32,7 @@
             android:title="Help" />
         <item
             android:id="@+id/about_menu"
-            android:icon="@drawable/ic_info_outline_black_18dp"
+            android:icon="@drawable/ic_info_black_18dp"
             android:title="About" />
     </group>
 

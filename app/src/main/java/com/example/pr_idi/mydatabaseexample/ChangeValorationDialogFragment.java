@@ -151,7 +151,7 @@ public class ChangeValorationDialogFragment extends DialogFragment {
             }
         });
 
-        alertDialogBuilder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+        alertDialogBuilder.setNegativeButton("Cancel·lar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();

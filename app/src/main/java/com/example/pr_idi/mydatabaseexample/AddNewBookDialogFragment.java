@@ -104,9 +104,9 @@ public class AddNewBookDialogFragment extends DialogFragment {
         alertDialogBuilder.setView(view);
 
         alertDialogBuilder.setTitle("Afegir un nou llibre");
-        alertDialogBuilder.setPositiveButton("OK",null);
+        alertDialogBuilder.setPositiveButton("AFEGEIX",null);
 
-        alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        alertDialogBuilder.setNegativeButton("Cancel·lar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
