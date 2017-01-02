@@ -83,12 +83,6 @@ public class AddNewBookFragment extends Fragment implements AddNewBookDialogFrag
 
         Snackbar snackbar = Snackbar
                 .make(getView(), "El llibre "+ b.getTitle() +" s'ha afegit!", Snackbar.LENGTH_LONG);
-        snackbar.setAction("Desfés", new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
         snackbar.show();
 
 
