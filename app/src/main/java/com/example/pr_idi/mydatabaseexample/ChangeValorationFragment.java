@@ -1,24 +1,29 @@
 package com.example.pr_idi.mydatabaseexample;
 
-import android.content.Context;
-import android.net.Uri;
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class FindBooksByAuthor extends Fragment {
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class ChangeValorationFragment extends Fragment {
+
+
+    public ChangeValorationFragment() {
+        // Required empty public constructor
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_find_books_by_author, container, false);
+        return inflater.inflate(R.layout.fragment_change_valoration, container, false);
     }
 
 }
