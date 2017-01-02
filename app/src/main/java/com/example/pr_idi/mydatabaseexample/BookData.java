@@ -94,9 +94,7 @@ public class BookData {
     }
 
     public ArrayList<Book> findBookByTitle(String title){
-
         ArrayList<Book> books = new ArrayList<>();
-
         Cursor cursor = database.query(MySQLiteHelper.TABLE_BOOKS,
                 allColumns, MySQLiteHelper.COLUMN_TITLE
                         + " =?", new String[] {title}, null, null, null);
@@ -132,6 +130,12 @@ public class BookData {
         // make sure to close the cursor
         cursor.close();
         return books;
+    }
+
+    public void updateValoracion(long id, String valoracion) {
+        ContentValues cv = new ContentValues();
+        cv.put(dbHelper.COLUMN_PERSONAL_EVALUATION,valoracion);
+        database.update(dbHelper.TABLE_BOOKS,cv,dbHelper.COLUMN_ID+"="+id,null);
     }
 
     private Book cursorToBook(Cursor cursor) {

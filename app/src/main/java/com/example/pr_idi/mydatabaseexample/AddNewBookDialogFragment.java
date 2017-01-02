@@ -8,13 +8,16 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.media.session.MediaSessionCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class AddNewBookDialogFragment extends DialogFragment {
 
@@ -96,46 +99,8 @@ public class AddNewBookDialogFragment extends DialogFragment {
 
         alertDialogBuilder.setView(view);
 
-        alertDialogBuilder.setTitle("Add new book");
-        alertDialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-                String author = String.valueOf(authorEditText.getText()) ;
-                String title = String.valueOf(titleEditText.getText()) ;
-                int year = Integer.valueOf(String.valueOf(yearEditText.getText()));
-                String publisher = String.valueOf(publisherEditText.getText()) ;
-                String category = String.valueOf(categoryEditText.getText()) ;
-
-                int ratingNum = (int) ratingBar.getRating();
-                String tt = "molt dolent";
-
-                switch (ratingNum){
-                    case 1:
-                        tt = "molt dolent";
-                        break;
-                    case 2:
-                        tt = "dolent";
-                        break;
-                    case 3:
-                        tt = "regular";
-                        break;
-                    case 4:
-                        tt = "bo";
-                        break;
-                    case 5:
-                        tt = "molt bo";
-                        break;
-                }
-
-                mListener.onDialogPositiveClick(new Book(author,
-                        title,
-                        year,
-                        publisher,
-                        category,
-                        tt));
-            }
-        });
+        alertDialogBuilder.setTitle("Afegir un nou llibre");
+        alertDialogBuilder.setPositiveButton("OK",null);
 
         alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
@@ -144,7 +109,63 @@ public class AddNewBookDialogFragment extends DialogFragment {
             }
         });
 
-        Dialog d = alertDialogBuilder.create();
+        AlertDialog d = alertDialogBuilder.create();
+        d.show();
+        d.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean tot_omplert = true;
+
+                String author = authorEditText.getText().toString();
+                String title = titleEditText.getText().toString();
+                String year_string = yearEditText.getText().toString();
+                String publisher = publisherEditText.getText().toString();
+                String category = categoryEditText.getText().toString();
+
+                if(author.isEmpty() || title.isEmpty() || year_string.isEmpty() || publisher.isEmpty()
+                        || category.isEmpty()) tot_omplert = false;
+
+
+                if(!tot_omplert){
+                    Toast t = Toast.makeText(getActivity().getApplicationContext(),"Ompliu tots els camps", Toast.LENGTH_LONG);
+                    t.show();
+                }
+                else{
+                    int year = Integer.valueOf(year_string);
+
+
+                    int ratingNum = (int) ratingBar.getRating();
+                    String tt = "molt dolent";
+
+                    switch (ratingNum){
+                        case 1:
+                            tt = "molt dolent";
+                            break;
+                        case 2:
+                            tt = "dolent";
+                            break;
+                        case 3:
+                            tt = "regular";
+                            break;
+                        case 4:
+                            tt = "bo";
+                            break;
+                        case 5:
+                            tt = "molt bo";
+                            break;
+                    }
+
+                    mListener.onDialogPositiveClick(new Book(author,
+                            title,
+                            year,
+                            publisher,
+                            category,
+                            tt));
+
+                    dismiss();
+                }
+            }
+        });
 
         return d;
     }
@@ -152,4 +173,5 @@ public class AddNewBookDialogFragment extends DialogFragment {
     public void setNoticeDialogListener (NoticeDialogListener mListener) {
         this.mListener = mListener;
     }
+
 }

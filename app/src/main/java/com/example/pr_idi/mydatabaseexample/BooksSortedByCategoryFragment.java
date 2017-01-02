@@ -29,6 +29,7 @@ public class BooksSortedByCategoryFragment extends FragmentWithInterface{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(false);
     }
 
     @Override
@@ -43,7 +44,6 @@ public class BooksSortedByCategoryFragment extends FragmentWithInterface{
         else{
             myLayoutManager = new LinearLayoutManager(inflater.getContext());
         }
-
 
         myRecyclerView = (RecyclerView) v.findViewById(R.id.book_recycler_view);
         myRecyclerView.setLayoutManager(myLayoutManager);
