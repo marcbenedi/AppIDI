@@ -40,10 +40,8 @@ public class NavigationActivity extends AppCompatActivity
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         if (savedInstanceState == null) {
-//            firstCharge = true;
             onNavigationItemSelected(navigationView.getMenu().getItem(0));
             navigationView.getMenu().getItem(0).setChecked(true);
-//            firstCharge = false;
         } else {
             setTitle(savedInstanceState.getCharSequence("AppBarTitle"));
         }
@@ -66,14 +64,12 @@ public class NavigationActivity extends AppCompatActivity
         return super.onCreateOptionsMenu(menu);
     }
 
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -86,28 +82,43 @@ public class NavigationActivity extends AppCompatActivity
         if (id == R.id.title_sorting) {
             BooksSortedByTitleFragment f = new BooksSortedByTitleFragment();
             myFragmentTransaction.replace(R.id.content_frame,f);
-        } else if (id == R.id.category_sorting) {
+            navigationView.getMenu().getItem(0).setChecked(true);
+        }
+        else if (id == R.id.category_sorting) {
             BooksSortedByCategoryFragment f = new BooksSortedByCategoryFragment();
             myFragmentTransaction.replace(R.id.content_frame,f);
             navigationView.getMenu().getItem(1).setChecked(true);
-        } else if (id == R.id.new_book){
-            AddNewBookFragment f = new AddNewBookFragment();
-            myFragmentTransaction.replace(R.id.content_frame,f);
-        } else if (id == R.id.delete_book){
-            DeleteBookFragment f = new DeleteBookFragment();
+        }
+        else if (id == R.id.books_by_author) {
+            FindBooksByAuthorFragment f = new FindBooksByAuthorFragment();
             myFragmentTransaction.replace(R.id.content_frame,f);
             navigationView.getMenu().getItem(2).setChecked(true);
-        } else if (id == R.id.help_menu) {
+        }
+        else if (id == R.id.new_book){
+            AddNewBookFragment f = new AddNewBookFragment();
+            myFragmentTransaction.replace(R.id.content_frame,f);
             navigationView.getMenu().getItem(3).setChecked(true);
-
-        } else if (id == R.id.about_menu) {
+        }
+        else if (id == R.id.delete_book){
+            DeleteBookFragment f = new DeleteBookFragment();
+            myFragmentTransaction.replace(R.id.content_frame,f);
             navigationView.getMenu().getItem(4).setChecked(true);
+        }
+        else if (id == R.id.change_valoration_menu) {
+            ChangeValorationFragment f = new ChangeValorationFragment();
+            myFragmentTransaction.replace(R.id.content_frame,f);
+            navigationView.getMenu().getItem(5).setChecked(true);
+        }
+        else if (id == R.id.help_menu) {
+            navigationView.getMenu().getItem(6).setChecked(true);
+        }
+        else if (id == R.id.about_menu) {
+            navigationView.getMenu().getItem(7).setChecked(true);
         }
         myFragmentTransaction.commit();
         setTitle(item.getTitle());
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
-
         return true;
     }
 

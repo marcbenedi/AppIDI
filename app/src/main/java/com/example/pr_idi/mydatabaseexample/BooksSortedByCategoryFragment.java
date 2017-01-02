@@ -44,7 +44,6 @@ public class BooksSortedByCategoryFragment extends FragmentWithInterface{
             myLayoutManager = new LinearLayoutManager(inflater.getContext());
         }
 
-
         myRecyclerView = (RecyclerView) v.findViewById(R.id.book_recycler_view);
         myRecyclerView.setLayoutManager(myLayoutManager);
 

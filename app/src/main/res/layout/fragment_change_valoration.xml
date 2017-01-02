@@ -5,9 +5,28 @@
     tools:context="com.example.pr_idi.mydatabaseexample.ChangeValorationFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:orientation="vertical">-->
+        <!--<Button-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/buttonUpdateValoration"-->
+            <!--android:text="Update Valoracion"/>-->
+        <!--<ListView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:id="@+id/listViewValoration"-->
+            <!--/>-->
+    <!--</LinearLayout>-->
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/book_recycler_view_valoration"
+        android:scrollbars="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent"/>
+
+
 
 </FrameLayout>

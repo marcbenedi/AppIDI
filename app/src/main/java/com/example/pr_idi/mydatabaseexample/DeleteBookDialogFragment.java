@@ -14,7 +14,6 @@ import android.widget.TextView;
 
 public class DeleteBookDialogFragment extends DialogFragment {
 
-
     private TextView autor;
     private TextView titol;
     private TextView editorial;
@@ -37,7 +36,7 @@ public class DeleteBookDialogFragment extends DialogFragment {
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.delete_book_dialog_layout,null);
 
-        if(savedInstanceState != null){
+        if(savedInstanceState != null) {
             b = (Book) savedInstanceState.getSerializable("llibre_guardat");
         }
 
@@ -100,7 +99,6 @@ public class DeleteBookDialogFragment extends DialogFragment {
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-
         outState.putSerializable("llibre_guardat",b);
     }
 }

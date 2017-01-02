@@ -71,7 +71,6 @@ public class DeleteBookFragment extends Fragment implements DeleteBookDialogFrag
             if (books.isEmpty()){
                 error_message.setVisibility(View.VISIBLE);
             }
-
             deleteBookDialogFragment = (DeleteBookDialogFragment) getActivity().getSupportFragmentManager().findFragmentByTag("fragment_delete_book_dialog");
             if (deleteBookDialogFragment != null){
                 deleteBookDialogFragment.setParams(me, llibreAEliminar);
