@@ -81,6 +81,8 @@
             android:id="@+id/textView16"
             android:visibility="invisible"
             android:textAlignment="center"
+            android:textSize="18sp"
+            android:layout_marginTop="20dp"
             android:textColor="@android:color/holo_red_light"
             android:textStyle="normal|bold" />
 

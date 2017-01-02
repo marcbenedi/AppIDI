@@ -27,7 +27,7 @@
             android:ems="10"
             android:id="@+id/editTextTitle"
             android:inputType="text"
-            android:textSize="12sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:text="Autor"
@@ -41,7 +41,7 @@
             android:ems="10"
             android:id="@+id/editTextAuthor"
             android:inputType="text"
-            android:textSize="12sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:text="Any"
@@ -56,7 +56,7 @@
             android:id="@+id/editTextYear"
             android:inputType="number"
             android:maxLength="4"
-            android:textSize="12sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:text="Editorial"
@@ -70,7 +70,7 @@
             android:inputType="text"
             android:ems="10"
             android:id="@+id/editTextPublisher"
-            android:textSize="12sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:text="Categoria"
@@ -84,7 +84,7 @@
             android:inputType="text"
             android:ems="10"
             android:id="@+id/editTextCategory"
-            android:textSize="12sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:text="Valoració personal"
