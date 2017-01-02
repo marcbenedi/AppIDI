@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,7 +38,7 @@ public class BooksSortedByCategoryFragment extends FragmentWithInterface{
         View v = inflater.inflate(R.layout.books_sorted_by_category_layout,container,false);
 
         if(getResources().getConfiguration().orientation == getResources().getConfiguration().ORIENTATION_LANDSCAPE){
-            myLayoutManager = new GridLayoutManager(getActivity().getApplicationContext(),2);
+            myLayoutManager = new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);
         }
         else{
             myLayoutManager = new LinearLayoutManager(inflater.getContext());

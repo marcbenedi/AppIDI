@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,7 +49,7 @@ public class DeleteBookFragment extends Fragment implements DeleteBookDialogFrag
         myBookData = new BookData(getActivity().getApplicationContext());
 
         if(getResources().getConfiguration().orientation == getResources().getConfiguration().ORIENTATION_LANDSCAPE){
-            myLayoutManager = new GridLayoutManager(getActivity().getApplicationContext(),2);
+            myLayoutManager = new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);
         }
         else{
             myLayoutManager = new LinearLayoutManager(inflater.getContext());
