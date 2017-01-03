@@ -61,11 +61,15 @@ public class DeleteBookFragment extends Fragment implements DeleteBookDialogFrag
         recyclerView.setAdapter(myAdapter);
 
         if(savedInstanceState != null){
-            System.out.println("oncreateview DIFERENT DE NULL");
             myEditText.setText(savedInstanceState.getString("titol_buscat"));
             myBookData.open();
             books.clear();
-            books.addAll(myBookData.findBookByTitle(String.valueOf(myEditText.getText())));
+            if(myEditText.getText().toString().length() == 0){
+                books.addAll(myBookData.getAllBooks());
+            }
+            else{
+                books.addAll(myBookData.findBookByTitle(String.valueOf(myEditText.getText())));
+            }
             myBookData.close();
             myAdapter.notifyDataSetChanged();
 
@@ -78,6 +82,14 @@ public class DeleteBookFragment extends Fragment implements DeleteBookDialogFrag
             }
 
 
+        }
+        else{
+            //Si es el primer cop, inicialment els mostrem tots
+            books.clear();
+            myBookData.open();
+            books.addAll(myBookData.getAllBooks());
+            myBookData.close();
+            myAdapter.notifyDataSetChanged();
         }
 
         myFragmentManager = getActivity().getSupportFragmentManager();
@@ -115,12 +127,9 @@ public class DeleteBookFragment extends Fragment implements DeleteBookDialogFrag
         boolean trobat = false;
         while (!trobat){
             Book bb = books.get(temp);
-            //System.out.println("Bucle: "+bb.getTitle() + " Id: " + bb.getId());
-            //System.out.println("Lid de l'original es "+ b.getId());
             if (bb.getId() == b.getId())trobat = true;
             else ++temp;
         }
-        //System.out.println("Posicio: " + temp + " Longitud array: "+books.size());
         pos_previa = temp;
         books.remove(pos_previa);
         myAdapter.notifyItemRemoved(pos_previa);
@@ -132,9 +141,17 @@ public class DeleteBookFragment extends Fragment implements DeleteBookDialogFrag
         snackbar.setAction("Desfés", new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 myBookData.open();
-                myBookData.insertBook(llibreAEliminar);
+
+                Book restaurar = myBookData.createBook(llibreAEliminar.getTitle(),
+                        llibreAEliminar.getAuthor(),llibreAEliminar.getPublisher(),
+                        llibreAEliminar.getYear(),llibreAEliminar.getCategory(),
+                        llibreAEliminar.getPersonal_evaluation());
+
+
                 myBookData.close();
+                llibreAEliminar = restaurar;
 
                 books.add(pos_previa,llibreAEliminar);
                 myAdapter.notifyItemInserted(pos_previa);

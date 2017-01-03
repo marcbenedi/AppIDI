@@ -40,20 +40,17 @@ public class BookData {
         dbHelper.close();
     }
 
-    public Book createBook(String title, String author) {
+    public Book createBook(String title, String author, String publisher, int year,
+                           String category, String eval) {
         ContentValues values = new ContentValues();
         Log.d("Creating", "Creating " + title + " " + author);
 
-        // Add data: Note that this method only provides title and author
-        // Must modify the method to add the full data
         values.put(MySQLiteHelper.COLUMN_TITLE, title);
         values.put(MySQLiteHelper.COLUMN_AUTHOR, author);
-
-        // Invented data
-        values.put(MySQLiteHelper.COLUMN_PUBLISHER, "Do not know");
-        values.put(MySQLiteHelper.COLUMN_YEAR, 2030);
-        values.put(MySQLiteHelper.COLUMN_CATEGORY, "Fantasia");
-        values.put(MySQLiteHelper.COLUMN_PERSONAL_EVALUATION, "regular");
+        values.put(MySQLiteHelper.COLUMN_PUBLISHER, publisher);
+        values.put(MySQLiteHelper.COLUMN_YEAR, year);
+        values.put(MySQLiteHelper.COLUMN_CATEGORY, category);
+        values.put(MySQLiteHelper.COLUMN_PERSONAL_EVALUATION, eval);
 
         // Actual insertion of the data using the values variable
         long insertId = database.insert(MySQLiteHelper.TABLE_BOOKS, null,
@@ -78,12 +75,25 @@ public class BookData {
         return newBook;
     }
 
+    public Book findBookById(long id){
+
+        Book b;
+        Cursor cursor = database.query(MySQLiteHelper.TABLE_BOOKS,
+                allColumns, MySQLiteHelper.COLUMN_ID
+                        + " =?", new String[] {String.valueOf(id)}, null, null, null);
+
+        cursor.moveToFirst();
+        b = cursorToBook(cursor);
+        cursor.close();
+
+        return b;
+    }
+
     public void deleteBook(Book book) {
         long id = book.getId();
         System.out.println("Book deleted with id: " + id);
-        database.delete(MySQLiteHelper.TABLE_BOOKS, MySQLiteHelper.COLUMN_ID
+        int afected = database.delete(MySQLiteHelper.TABLE_BOOKS, MySQLiteHelper.COLUMN_ID
                 + " = " + id, null);
-        System.out.println("fi delete");
     }
 
     public ArrayList<Book> findBookByTitle(String title){
@@ -105,9 +115,7 @@ public class BookData {
 
 
     public void insertBook(Book book){
-        System.out.println("insert book");
-        database.insert(MySQLiteHelper.TABLE_BOOKS,null,book.toContentValues());
-        System.out.println("fi insert");
+        long id = database.insert(MySQLiteHelper.TABLE_BOOKS,null,book.toContentValues());
     }
 
     public List<Book> getAllBooks() {
@@ -146,13 +154,3 @@ public class BookData {
         return book;
     }
 }
-
-/*
-book.setId(cursor.getLong(0));
-        book.setTitle(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_TITLE)));
-        book.setAuthor(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_AUTHOR)));
-        book.setPublisher(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_PUBLISHER)));
-        book.setYear(cursor.getInt(cursor.getColumnIndex(dbHelper.COLUMN_YEAR)));
-        book.setCategory(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_CATEGORY)));
-        book.setPersonal_evaluation(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_PERSONAL_EVALUATION)));
-*/

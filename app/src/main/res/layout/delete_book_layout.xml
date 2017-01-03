@@ -5,45 +5,6 @@
     android:orientation="vertical"
     tools:context="com.example.pr_idi.mydatabaseexample.DeleteBookFragment">
 
-    <!--<TextView-->
-        <!--android:text="Introdueixi el títol del llibre que vol eliminar"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:paddingTop="10dp"-->
-        <!--android:paddingLeft="5dp"-->
-        <!--android:paddingBottom="10dp"-->
-        <!--android:id="@+id/textView" />-->
-
-    <!--<EditText-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:ems="10"-->
-        <!--android:id="@+id/editTextTitle"-->
-        <!--android:inputType="text"-->
-        <!--android:textSize="12sp" />-->
-
-    <!--<Button-->
-        <!--android:text="Cercar"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:id="@+id/button" />-->
-
-    <!--<TextView-->
-        <!--android:text="No s'ha trobat el llibre"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:id="@+id/textView16"-->
-        <!--android:visibility="invisible"-->
-        <!--android:textAlignment="center"-->
-        <!--android:textColor="@android:color/holo_red_light"-->
-        <!--android:textStyle="normal|bold" />-->
-
-    <!--<android.support.v7.widget.RecyclerView-->
-        <!--android:id="@+id/recview"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent" />-->
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -57,9 +18,8 @@
             android:id="@+id/editTextTitle"
             android:inputType="text"
             android:textSize="15sp"
-            android:hint="Introdueixi el títol del llibre"
             android:layout_weight="0.7"
-            />
+            android:hint="Buscar un llibre per títol" />
 
         <Button
             android:text="Cercar"

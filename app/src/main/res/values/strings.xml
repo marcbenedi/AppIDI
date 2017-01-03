@@ -24,11 +24,15 @@
 
     <string name="afegir_llibre_help_body">En aquesta secció es poden afegir nous llibres a la base de dades. Per fer-ho, haurem de prémer el botó amb el símbol "+" que es troba a la part inferior dreta de la pantalla. Un cop entrades les dades del nou llibre, i si tot ha anat correctament, veurem que el nou llibre s\'ha afegit</string>
 
-    <string name="eliminar_llibre_help_body">En aquesta secció podem eliminar els llibres que ja no volguem de la base de dades. Per fer-ho, cercarem el títol del llibre i posteriorment farem clic sobre la targeta que conté les dades del llibre a eliminar. Després d\'una confirmació, el llibre serà eliminat, tot i que aquesta acció es pot desfer si fem clic a "Desfés" quan aquesta opció aparegui</string>
+    <string name="eliminar_llibre_help_body">En aquesta secció podem eliminar els llibres que ja no volguem de la base de dades. Inicialment, sortiran a la llista tots els llibres que hi ha. Per eliminar un llibre, s\'ha de clicar sobre l\'element i confirmar l\'acció. També podem cercar un llibre per títol i posteriorment fer clic sobre la targeta que conté les dades del llibre a eliminar. Després d\'una confirmació, el llibre serà eliminat, tot i que aquesta acció es pot desfer si fem clic a "Desfés" quan aquesta opció aparegui</string>
 
     <string name="canviar_valoracio_help_body">En aquesta secció podrem canviar la valoració personal dels llibres que tenim a la base de dades. Per fer-ho, simplement farem clic sobre el llibre que volem canviar, i ens apareixerà una finestra per introduir la nova valoració. Posteriorment, si confirmem l\'acció, veurem que s\'ha actualitzat la nostra valoració personal del llibre</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="about_description">Som el grup And063 i hem fet la pràctica 2.
+        El primer membre de l\'equip, en Marc, ha realitzat la part A de la pràctica.
+        El segon membre, l\'Hermes, ha realitzat la part B.
+        \nPer a qualsevol dubte podeu fer click sobre l\'icona de Twitter per visitar els nostres perfils
+        i així poder contactar amb nosaltres.
+    </string>
 
 </resources>

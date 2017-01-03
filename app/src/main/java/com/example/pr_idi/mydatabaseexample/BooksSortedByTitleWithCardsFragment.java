@@ -1,6 +1,7 @@
 package com.example.pr_idi.mydatabaseexample;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -12,14 +13,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-public class BooksSortedByTitleWithCardsFragment extends FragmentWithInterface{
+public class BooksSortedByTitleWithCardsFragment extends Fragment implements CreateNewBookInterface{
 
     private RecyclerView myRecyclerView;
     private RecyclerView.Adapter myAdapter;
     private RecyclerView.LayoutManager myLayoutManager;
     private BookData myBookData;
     private ArrayList<Book> myBooks = new ArrayList<>();
-    private static final String TAG = "BooksSortedByCategory..";
+    private static final String TAG = "BooksSortedByTitle.";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -68,10 +69,15 @@ public class BooksSortedByTitleWithCardsFragment extends FragmentWithInterface{
     }
 
     @Override
-    public void updateList(ArrayList<Book> b) {
-        myBooks.clear();
-        myBooks.addAll(b);
+    public void insertNewElement(Book b) {
+        myBooks.add(b);
         sortByCategory(myBooks);
-        myAdapter.notifyDataSetChanged();
+        int pos = 0;
+        boolean trobat = false;
+        while(! trobat){
+            if(b.getId() == myBooks.get(pos).getId()) trobat = true;
+            else ++pos;
+        }
+        myAdapter.notifyItemInserted(pos);
     }
 }

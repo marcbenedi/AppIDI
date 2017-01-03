@@ -17,7 +17,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 
-public class BooksSortedByCategoryFragment extends FragmentWithInterface{
+public class BooksSortedByCategoryFragment extends Fragment{
 
     private RecyclerView myRecyclerView;
     private RecyclerView.Adapter myAdapter;
@@ -70,13 +70,5 @@ public class BooksSortedByCategoryFragment extends FragmentWithInterface{
                 return  b1.getCategory().compareTo(b2.getCategory());
             }
         });
-    }
-
-    @Override
-    public void updateList(ArrayList<Book> b) {
-        myBooks.clear();
-        myBooks.addAll(b);
-        sortByCategory(myBooks);
-        myAdapter.notifyDataSetChanged();
     }
 }

@@ -18,7 +18,7 @@ public class AddNewBookFragment extends Fragment implements AddNewBookDialogFrag
     private static final String TAG = "AddNewBookFragment";
     private FragmentManager myFragmentManager;
     private FragmentTransaction myFragmentTransaction;
-    private FragmentWithInterface currentFragment;
+    private BooksSortedByTitleWithCardsFragment currentFragment;
     private ArrayList<Book> myBooks = new ArrayList<>();
     private BookData myBookData;
     private AddNewBookFragment me;
@@ -74,12 +74,11 @@ public class AddNewBookFragment extends Fragment implements AddNewBookDialogFrag
     public void onDialogPositiveClick(Book b) {
         myBookData = new BookData(getActivity().getApplicationContext());
         myBookData.open();
-        myBookData.insertBook(b);
-        myBooks.clear();
-        myBooks.addAll(myBookData.getAllBooks());
+        Book insertat = myBookData.createBook(b.getTitle(),b.getAuthor(),b.getPublisher(),
+                b.getYear(),b.getCategory(),b.getPersonal_evaluation());
         myBookData.close();
 
-        currentFragment.updateList(myBooks);
+        currentFragment.insertNewElement(insertat);
 
         Snackbar snackbar = Snackbar
                 .make(getView(), "El llibre "+ b.getTitle() +" s'ha afegit!", Snackbar.LENGTH_LONG);
